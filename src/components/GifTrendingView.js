@@ -1,59 +1,44 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchTrending } from '../actions';
 
 import '../CSS/App.css';
+
+import GifListItem from './GifListItem';
 
 class GifTrendingView extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      trendingGifs: []
-    };
+    this.showMe = this.showMe.bind(this);
 
-    this.grabTrendingGifs = this.grabTrendingGifs.bind(this);
-    this.setCurrentTrendingState = this.setCurrentTrendingState.bind(this);
   }
 
   componentWillMount() {
-    const _this = this;
-    axios.get('https://api.giphy.com/v1/gifs/trending?api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE')
-      .then(response => {
-        this.setState({
-          trendingGifs: response.data
-        });
-      })
+    this.props.fetchTrending();
+    console.log(this.props.gifs);
   }
 
-  grabTrendingGifs() {
-    const _this = this;
-
-    axios.get('http://api.giphy.com/v1/gifs/trending?api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE')
-      .then(response => {
-        console.log("-------------AXIOS---------");
-        _this.setCurrentTrendingState(response.data.data);
-      })
-      .catch(error => {
-        console.log("-------------Error---------");
-        console.log(error);
-      });
-
-  }
-
-  setCurrentTrendingState(data) {
-    this.setState(
-      {trendingGifs: data}
-    );
+  showMe() {
+    // this.props.gifs[0].images.downsized_medium.url
   }
 
   render() {
     return (
       <div className="border-all">
         <h1>Gif View</h1>
+        <GifListItem />
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  const { gifs } = state.trendingGif
+  return {
+    gifs
+  };
+};
 
-export default GifTrendingView;
+export default connect(mapStateToProps, { fetchTrending })(GifTrendingView);
