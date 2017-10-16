@@ -6,6 +6,7 @@ import { fetchTrending } from '../actions';
 import '../CSS/App.css';
 
 import GifListItem from './GifListItem';
+import SectionHeader from './common/SectionHeader';
 
 class GifTrendingView extends React.Component {
 
@@ -37,7 +38,7 @@ class GifTrendingView extends React.Component {
   render() {
     return (
       <div className="border-all">
-        <h1>Gif View</h1>
+        <SectionHeader title="Trending GIFs" />
         {this.renderRow()}
       </div>
     );

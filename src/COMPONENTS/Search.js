@@ -1,35 +1,23 @@
 import React from 'react';
+
 import '../CSS/App.css';
 
-class Search extends React.Component {
-  // React Lifecycle:
-  // getDefaultProps
-  // getInitialState
-  // componentWillReceiveProps
-  // shouldComponentUpdate
-  // componentWillUpdate
-  // render
-  // componentDidUpdate
+import SectionHeader from './common/SectionHeader';
+import InputField from './common/InputField';
+import Button from './common/Button';
 
+class Search extends React.Component {
   constructor(props) {
     super(props);
-    // if state is needed uncomment below------------
-    // this.state = {
-    //   currentState: 'LIVE'
-    // }
-    //
-    // include event handlers------------------------
-    //
-    // State props outside component-----------------
-    // COMPONENT.defaultProps = {
-    //
-    // };
+
   }
 
   render() {
     return (
       <div className="border-all">
-        <h1>Search Section</h1>
+        <SectionHeader title="Seach:" />
+        <InputField placeHolder="What would you like to search for?"/>
+        <Button text="Search"/>
       </div>
     );
   }
