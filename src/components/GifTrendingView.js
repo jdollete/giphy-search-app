@@ -6,6 +6,7 @@ import { fetchTrending } from '../actions';
 import '../CSS/App.css';
 
 import GifListItem from './GifListItem';
+import SectionHeader from './common/SectionHeader';
 
 class GifTrendingView extends React.Component {
 
@@ -22,13 +23,12 @@ class GifTrendingView extends React.Component {
 
   renderRow() {
     const elements = this.props.gifs;
-    // const elements2 = "https://media0.giphy.com/media/l4FGrc36ps3naFSow/giphy.gif";
 
     if (elements != null) {
       const gifRows = elements.map(function(element){
-        console.log(element.images.downsized_medium.url);
+
         return (
-          <GifListItem gifUrl={element.images.downsized_medium.url} />
+          <GifListItem key={element.id} gifUrl={element.images.fixed_height.url} gifOrigLink={element.url} />
         )
       });
       return gifRows;
@@ -37,9 +37,11 @@ class GifTrendingView extends React.Component {
 
   render() {
     return (
-      <div className="border-all">
-        <h1>Gif View</h1>
-        {this.renderRow()}
+      <div className="gif-image-section">
+        <SectionHeader sectionClass="sectioned-headers" title="Trending GIFs" />
+        <div className="gif-image-display">
+          {this.renderRow()}
+        </div>
       </div>
     );
   }
