@@ -1,8 +1,17 @@
 import axios from 'axios';
 import {
   TRENDING_GIF_FETCH,
-  SEARCH_GIFS
+  SEARCH_GIFS,
+  INPUT_CHANGED
 } from './types';
+
+export const inputFieldChanged = (text) => {
+  console.log(text);
+  return {
+    type: INPUT_CHANGED,
+    payload: text
+  };
+};
 
 export const fetchTrending = () => {
   return(dispatch) => {

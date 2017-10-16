@@ -1,11 +1,16 @@
 import React from 'react';
 import '../../CSS/App.css';
 
-const InputField = (props) => {
-  const { title, placeHolder } = props;
+const InputField = ({ title, placeHolder, value, onChange }) => {
 
   return (
-    <input className="input-field" type="text" placeholder={placeHolder} />
+    <input
+      onChange={onChange}
+      className="input-field"
+      type="text"
+      placeholder={placeHolder}
+      value={value}
+    />
   );
 
 }

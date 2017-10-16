@@ -4,6 +4,19 @@
   /*border-style: dotted;*/
 }
 
+button {
+  outline: 0;
+  outline-style:none;
+  outline-width:0;
+}
+
+button:active {
+  outline: 0;
+  outline-style:none;
+  outline-width:0;
+  background-color: #1344B2;
+}
+
 .main-header {
   display: flex;
   justify-content: center;
@@ -46,7 +59,7 @@
   height: 60px;
   width: 150px;
   border-radius: 15px;
-  background-color: yellow;
+  background-color: #1A5FF8;
   font-size: 1.8em;
   margin-top: 5px;
   margin-bottom: 5px;
