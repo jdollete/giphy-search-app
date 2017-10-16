@@ -1,10 +1,12 @@
 import {
   TRENDING_GIF_FETCH,
-  SEARCH_GIFS
+  SEARCH_GIFS,
+  INPUT_CHANGED
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  gifs: []
+  gifs: [],
+  inputFieldText: ""
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,7 +14,9 @@ export default (state = INITIAL_STATE, action) => {
     case TRENDING_GIF_FETCH:
       return { ...state, gifs: action.payload };
     case SEARCH_GIFS:
-      return { ...state, searchedGifs: action.payload}
+      return { ...state, searchedGifs: action.payload};
+    case INPUT_CHANGED:
+      return { ...state, inputFieldText: action.payload};
     default:
       return state;
   }
