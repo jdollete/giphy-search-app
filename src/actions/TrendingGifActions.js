@@ -15,7 +15,6 @@ export const fetchTrending = () => {
 };
 
 const trendingFetchSuccess = (dispatch, responseData) => {
-
   dispatch({
     type: TRENDING_GIF_FETCH,
     payload: responseData

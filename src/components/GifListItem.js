@@ -8,9 +8,12 @@ class GifListItem extends React.Component {
   }
 
   render() {
+    console.log("-------------HIT------------");
+    const { gifUrl } = this.props
+    debugger;
     return (
       <div className="border-all">
-        <h3>Image</h3>
+        <img src={gifUrl} />
       </div>
     );
   }
