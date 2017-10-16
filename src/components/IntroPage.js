@@ -12,7 +12,6 @@ class IntroPage extends Component {
   constructor(props) {
     super(props);
 
-
   }
 
   render() {
