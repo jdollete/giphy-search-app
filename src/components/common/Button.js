@@ -5,7 +5,7 @@ const Button = (props) => {
   const { text } = props;
 
   return (
-    <button type="button">{text}</button>
+    <button className="sumbit-button" type="button">{text}</button>
   );
 
 }

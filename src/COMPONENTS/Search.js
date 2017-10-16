@@ -14,8 +14,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="border-all">
-        <SectionHeader title="Seach:" />
+      <div className="search-section">
         <InputField placeHolder="What would you like to search for?"/>
         <Button text="Search"/>
       </div>

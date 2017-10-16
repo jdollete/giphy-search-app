@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import '../CSS/App.css';
-import Header from './Header';
+
+import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
@@ -17,10 +18,16 @@ class IntroPage extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Search />
-        <GifTrendingView />
-        <PreviousSearches />
+        <SectionHeader title="GIHPY SEARCH" sectionClass="main-header" />
+        <div className="outter-box">
+          <div className="inner-left-box">
+            <Search />
+            <GifTrendingView />
+          </div>
+          <div className="inner-right-box">
+            <PreviousSearches />
+          </div>
+        </div>
       </div>
 
     );

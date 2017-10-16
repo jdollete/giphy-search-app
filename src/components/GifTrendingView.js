@@ -28,7 +28,7 @@ class GifTrendingView extends React.Component {
       const gifRows = elements.map(function(element){
 
         return (
-          <GifListItem key={element.id} gifUrl={element.images.downsized_medium.url} gifOrigLink={element.url} />
+          <GifListItem key={element.id} gifUrl={element.images.fixed_height.url} gifOrigLink={element.url} />
         )
       });
       return gifRows;
@@ -37,9 +37,11 @@ class GifTrendingView extends React.Component {
 
   render() {
     return (
-      <div className="border-all">
-        <SectionHeader title="Trending GIFs" />
-        {this.renderRow()}
+      <div className="gif-image-section">
+        <SectionHeader sectionClass="sectioned-headers" title="Trending GIFs" />
+        <div className="gif-image-display">
+          {this.renderRow()}
+        </div>
       </div>
     );
   }

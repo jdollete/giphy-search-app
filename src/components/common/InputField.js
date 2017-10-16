@@ -5,7 +5,7 @@ const InputField = (props) => {
   const { title, placeHolder } = props;
 
   return (
-    <input type="text" placeholder={placeHolder} />
+    <input className="input-field" type="text" placeholder={placeHolder} />
   );
 
 }

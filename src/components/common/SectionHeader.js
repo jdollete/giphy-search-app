@@ -2,11 +2,11 @@ import React from 'react';
 import '../../CSS/App.css';
 
 const SectionHeader = (props) => {
-  const { title } = props;
+  const { title, sectionClass } = props;
 
   return (
-    <div className="border-all">
-      <h1>{title}</h1>
+    <div className="">
+      <span className={sectionClass}>{title}</span>
     </div>
   );
 

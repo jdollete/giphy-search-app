@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../CSS/App.css';
+
 class GifListItem extends React.Component {
 
   constructor(props) {
@@ -11,7 +13,7 @@ class GifListItem extends React.Component {
     const { gifUrl, gifOrigLink } = this.props
 
     return (
-      <div className="border-all">
+      <div className="gif-image">
         <a href={gifOrigLink} target="_blank"><img src={gifUrl} /></a>
       </div>
     );
