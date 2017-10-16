@@ -33,7 +33,7 @@ export const searchGifs = (input) => {
       + "&api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE")
       .then(response => {
       const responseData = response.data.data
-      trendingFetchSuccess(dispatch, responseData);
+      searchGifsSuccess(dispatch, responseData);
     })
   }
 };
@@ -41,6 +41,13 @@ export const searchGifs = (input) => {
 const trendingFetchSuccess = (dispatch, responseData) => {
   dispatch({
     type: TRENDING_GIF_FETCH,
+    payload: responseData
+  });
+};
+
+const searchGifsSuccess = (dispatch, responseData) => {
+  dispatch({
+    type: SEARCH_GIFS,
     payload: responseData
   });
 };

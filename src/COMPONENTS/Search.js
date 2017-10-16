@@ -6,25 +6,31 @@ import '../CSS/App.css';
 import SectionHeader from './common/SectionHeader';
 import InputField from './common/InputField';
 import Button from './common/Button';
-import { inputFieldChanged } from '../actions';
+import { inputFieldChanged, searchGifs } from '../actions';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSearchClick = this.onSearchClick.bind(this);
 
   }
 
   onInputChange(text) {
     var newText;
     if (text.nativeEvent.data === null) {
-      newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1)
+      newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1);
     } else {
-      newText = this.props.inputFieldText + text.nativeEvent.data
+      newText = this.props.inputFieldText + text.nativeEvent.data;
     }
 
     this.props.inputFieldChanged(newText);
+  }
+
+  onSearchClick() {
+    const input = this.props.inputFieldText;
+    this.props.searchGifs(input);
   }
 
   render() {
@@ -34,7 +40,7 @@ class Search extends React.Component {
           onChange={this.onInputChange}
           value={this.props.inputFieldText}
           placeHolder="What would you like to search for?"/>
-        <Button text="Search"/>
+        <Button onClick={this.onSearchClick} text="Search"/>
       </div>
     );
   }
@@ -42,9 +48,13 @@ class Search extends React.Component {
 
 const mapStateToProps = state => {
   const { inputFieldText } = state.inputFieldText
+  const { searchedGifs}  = state.searchedGifs
+  
   return {
-    inputFieldText
+    inputFieldText,
+    searchedGifs
   };
+
 };
 
-export default connect(mapStateToProps, { inputFieldChanged })(Search);
+export default connect(mapStateToProps, { inputFieldChanged, searchGifs })(Search);

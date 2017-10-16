@@ -1,11 +1,10 @@
 import React from 'react';
 import '../../CSS/App.css';
 
-const Button = (props) => {
-  const { text } = props;
+const Button = ({ text, onClick }) => {
 
   return (
-    <button className="sumbit-button" type="button">{text}</button>
+    <button onClick={onClick} className="sumbit-button" type="button">{text}</button>
   );
 
 }
