@@ -22,13 +22,12 @@ class GifTrendingView extends React.Component {
 
   renderRow() {
     const elements = this.props.gifs;
-    // const elements2 = "https://media0.giphy.com/media/l4FGrc36ps3naFSow/giphy.gif";
 
     if (elements != null) {
       const gifRows = elements.map(function(element){
-        console.log(element.images.downsized_medium.url);
+
         return (
-          <GifListItem gifUrl={element.images.downsized_medium.url} />
+          <GifListItem key={element.id} gifUrl={element.images.downsized_medium.url} gifOrigLink={element.url} />
         )
       });
       return gifRows;
