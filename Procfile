@@ -1,1 +1,1 @@
-web: npm run start:prod
+worker: node server.js
