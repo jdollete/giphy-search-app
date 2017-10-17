@@ -3,7 +3,6 @@ import React from 'react';
 
 import '../CSS/App.css';
 
-import SectionHeader from './common/SectionHeader';
 import InputField from './common/InputField';
 import Button from './common/Button';
 import { inputFieldChanged, searchGifs } from '../actions';
