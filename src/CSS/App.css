@@ -31,6 +31,15 @@ button:active {
   font-size: 1em;
 }
 
+ul.previous-search-list {
+  display: flex;
+    flex-direction: column-reverse;
+}
+
+ul.previous-search-list li {
+  flex: 0 0 auto;
+}
+
 .sectioned-headers {
   display: flex;
   font-size: 2em;
