@@ -6,5 +6,6 @@ export default combineReducers({
   trendingGif: TrendingGifReducer,
   searchedGifs: TrendingGifReducer,
   inputFieldText: TrendingGifReducer,
-  previousSearches: TrendingGifReducer
+  previousSearches: TrendingGifReducer,
+  gifSearchResults: TrendingGifReducer
 });

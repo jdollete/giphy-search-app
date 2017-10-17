@@ -68,6 +68,7 @@ export const setPreviousSearch = (searchArray, search) => {
 };
 
 const trendingFetchSuccess = (dispatch, responseData) => {
+
   dispatch({
     type: TRENDING_GIF_FETCH,
     payload: responseData

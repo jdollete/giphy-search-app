@@ -7,17 +7,18 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  gifs: [],
+  trendingGif: [],
   inputFieldText: "",
-  previousSearches: []
+  previousSearches: [],
+  gifSearchResults: []
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TRENDING_GIF_FETCH:
-      return { ...state, gifs: action.payload };
+      return { ...state, trendingGif: action.payload };
     case SEARCH_GIFS:
-      return { ...state, searchedGifs: action.payload};
+      return { ...state, gifSearchResults: action.payload};
     case INPUT_CHANGED:
       return { ...state, inputFieldText: action.payload};
     case CLEAR_SEARCH:

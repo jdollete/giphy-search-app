@@ -7,7 +7,7 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
-import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch } from '../actions';
+import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch, fetchTrending } from '../actions';
 
 
 class IntroPage extends Component {
@@ -25,6 +25,10 @@ class IntroPage extends Component {
 
   }
 
+  componentWillMount() {
+    this.props.fetchTrending();
+  }
+
   onKeyDownCheck(event) {
     if (event.key === "Enter") {
       this.onSearchClick();
@@ -32,7 +36,6 @@ class IntroPage extends Component {
   }
 
   onInputChange(text) {
-
     const currentText = document.getElementById("search-input").value;
 
     this.props.inputFieldChanged(currentText);
@@ -52,7 +55,7 @@ class IntroPage extends Component {
         this.props.setPreviousSearch(this.props.previousSearches, input);
       }
 
-      this.props.clearSearch()
+      this.props.clearSearch();
 
     }
 
@@ -70,7 +73,7 @@ class IntroPage extends Component {
               onChange={this.onInputChange}
               onKeyDownCheck={this.onKeyDownCheck}
               value={this.props.inputFieldText} />
-            <GifTrendingView />
+            <GifTrendingView trendingGifObjects={this.props.trendingGif}  />
           </div>
           <div className="inner-right-box">
             <PreviousSearches previousSearches={this.props.previousSearches} />
@@ -83,17 +86,27 @@ class IntroPage extends Component {
 }
 
 const mapStateToProps = state => {
+  const { trendingGif } = state.trendingGif
+  const { gifSearchResults } = state.gifSearchResults
   const { inputFieldText } = state.inputFieldText
   const { searchedGifs }  = state.searchedGifs
   const { previousSearches } = state.previousSearches
 
   return {
+    trendingGif,
     inputFieldText,
     searchedGifs,
-    previousSearches
+    previousSearches,
+    gifSearchResults
   };
 
 };
 
 // export default IntroPage;
-export default connect(mapStateToProps, { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch })(IntroPage);
+export default connect(mapStateToProps, {
+  inputFieldChanged,
+  searchGifs,
+  setPreviousSearch,
+  clearSearch,
+  fetchTrending
+})(IntroPage);
