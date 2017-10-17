@@ -45,20 +45,13 @@ class IntroPage extends Component {
     if (this.props.previousSearches[0] === undefined) {
       this.props.setPreviousSearch(this.props.previousSearches, input)
     } else {
-      if (Object.values(this.props.previousSearches[0]).indexOf(input) > -1) {
+      const wordsSearched = this.props.previousSearches.map(element => {return element.word})
+      if (wordsSearched.includes(input)) {
         return
       } else {
         this.props.setPreviousSearch(this.props.previousSearches, input);
       }
     }
-
-    // if (this.props.previousSearches.includes(input)) {
-    //   return
-    // } else {
-    //   this.props.previousSearches.push(input)
-    //   this.props.setPreviousSearch(this.props.previousSearches);
-    //   this.setState({ currentSearchState: this.props.previousSearches})
-    // }
 
     console.log(this.props.previousSearches);
   }
