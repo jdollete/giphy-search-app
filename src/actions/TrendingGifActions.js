@@ -2,11 +2,12 @@ import axios from 'axios';
 import {
   TRENDING_GIF_FETCH,
   SEARCH_GIFS,
-  INPUT_CHANGED
+  INPUT_CHANGED,
+  PREVIOUS_SEARCH
 } from './types';
 
 export const inputFieldChanged = (text) => {
-  console.log(text);
+
   return {
     type: INPUT_CHANGED,
     payload: text
@@ -25,6 +26,7 @@ export const fetchTrending = () => {
 };
 
 export const searchGifs = (input) => {
+
   return(dispatch) => {
     dispatch({ type: SEARCH_GIFS });
 
@@ -38,6 +40,23 @@ export const searchGifs = (input) => {
   }
 };
 
+export const setPreviousSearch = (searchArray, search) => {
+  var newObject = {}
+  const currentTime = String(Date.now());
+
+  newObject.id = currentTime;
+  newObject.word = search;
+
+  searchArray.push(newObject);
+
+  // var allSearches = [];
+  // var newSearchCollection = allSearches.push(searches);
+  return {
+    type: PREVIOUS_SEARCH,
+    payload: searchArray
+  };
+};
+
 const trendingFetchSuccess = (dispatch, responseData) => {
   dispatch({
     type: TRENDING_GIF_FETCH,
@@ -46,6 +65,7 @@ const trendingFetchSuccess = (dispatch, responseData) => {
 };
 
 const searchGifsSuccess = (dispatch, responseData) => {
+  console.log(responseData);
   dispatch({
     type: SEARCH_GIFS,
     payload: responseData

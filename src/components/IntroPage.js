@@ -7,13 +7,17 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
-import { inputFieldChanged, searchGifs } from '../actions';
+import { inputFieldChanged, searchGifs, setPreviousSearch } from '../actions';
 
 
 class IntroPage extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentSearchState: []
+    }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
@@ -37,6 +41,26 @@ class IntroPage extends Component {
   onSearchClick() {
     const input = this.props.inputFieldText;
     this.props.searchGifs(input);
+
+    if (this.props.previousSearches[0] === undefined) {
+      this.props.setPreviousSearch(this.props.previousSearches, input)
+    } else {
+      if (Object.values(this.props.previousSearches[0]).indexOf(input) > -1) {
+        return
+      } else {
+        this.props.setPreviousSearch(this.props.previousSearches, input);
+      }
+    }
+
+    // if (this.props.previousSearches.includes(input)) {
+    //   return
+    // } else {
+    //   this.props.previousSearches.push(input)
+    //   this.props.setPreviousSearch(this.props.previousSearches);
+    //   this.setState({ currentSearchState: this.props.previousSearches})
+    // }
+
+    console.log(this.props.previousSearches);
   }
 
   render() {
@@ -49,7 +73,7 @@ class IntroPage extends Component {
             <GifTrendingView />
           </div>
           <div className="inner-right-box">
-            <PreviousSearches />
+            <PreviousSearches previousSearches={this.props.previousSearches} />
           </div>
         </div>
       </div>
@@ -61,13 +85,15 @@ class IntroPage extends Component {
 const mapStateToProps = state => {
   const { inputFieldText } = state.inputFieldText
   const { searchedGifs }  = state.searchedGifs
+  const { previousSearches } = state.previousSearches
 
   return {
     inputFieldText,
-    searchedGifs
+    searchedGifs,
+    previousSearches
   };
 
 };
 
 // export default IntroPage;
-export default connect(mapStateToProps, { inputFieldChanged, searchGifs })(IntroPage);
+export default connect(mapStateToProps, { inputFieldChanged, searchGifs, setPreviousSearch })(IntroPage);
