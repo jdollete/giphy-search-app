@@ -7,7 +7,7 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
-import { inputFieldChanged, searchGifs, setPreviousSearch } from '../actions';
+import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch } from '../actions';
 
 
 class IntroPage extends Component {
@@ -51,6 +51,9 @@ class IntroPage extends Component {
       } else {
         this.props.setPreviousSearch(this.props.previousSearches, input);
       }
+
+      this.props.clearSearch()
+
     }
 
     console.log(this.props.previousSearches);
@@ -89,4 +92,4 @@ const mapStateToProps = state => {
 };
 
 // export default IntroPage;
-export default connect(mapStateToProps, { inputFieldChanged, searchGifs, setPreviousSearch })(IntroPage);
+export default connect(mapStateToProps, { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch })(IntroPage);

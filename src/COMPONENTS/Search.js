@@ -18,7 +18,7 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
-    
+
   }
 
   // onInputChange(text) {
@@ -38,12 +38,12 @@ class Search extends React.Component {
   // }
 
   render() {
-    const { onClick, onChange } = this.props
+    const { onClick, onChange, value } = this.props
     return (
       <div className="search-section">
         <InputField
           onChange={onChange}
-          value={this.props.inputFieldText}
+          value={value}
           placeHolder="What would you like to search for?"/>
         <Button onClick={onClick} text="Search"/>
       </div>

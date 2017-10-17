@@ -3,7 +3,8 @@ import {
   TRENDING_GIF_FETCH,
   SEARCH_GIFS,
   INPUT_CHANGED,
-  PREVIOUS_SEARCH
+  PREVIOUS_SEARCH,
+  CLEAR_SEARCH
 } from './types';
 
 export const inputFieldChanged = (text) => {
@@ -11,6 +12,14 @@ export const inputFieldChanged = (text) => {
   return {
     type: INPUT_CHANGED,
     payload: text
+  };
+};
+
+export const clearSearch = () => {
+
+  return {
+    type: CLEAR_SEARCH,
+    payload: ""
   };
 };
 
