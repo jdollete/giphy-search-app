@@ -33,11 +33,13 @@ button:active {
 
 ul.previous-search-list {
   display: flex;
-    flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 
 ul.previous-search-list li {
   flex: 0 0 auto;
+  list-style: none;
+  padding: 5px;
 }
 
 .sectioned-headers {

@@ -41,6 +41,9 @@ export const searchGifs = (input) => {
 };
 
 export const setPreviousSearch = (searchArray, search) => {
+  if ( searchArray.length >= 15 ) {
+    searchArray = searchArray.slice(Math.max(searchArray.length - 14, 1))
+  }
   var newObject = {}
   const currentTime = String(Date.now());
 
@@ -49,8 +52,6 @@ export const setPreviousSearch = (searchArray, search) => {
 
   searchArray.push(newObject);
 
-  // var allSearches = [];
-  // var newSearchCollection = allSearches.push(searches);
   return {
     type: PREVIOUS_SEARCH,
     payload: searchArray
