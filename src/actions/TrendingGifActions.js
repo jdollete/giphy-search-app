@@ -2,14 +2,24 @@ import axios from 'axios';
 import {
   TRENDING_GIF_FETCH,
   SEARCH_GIFS,
-  INPUT_CHANGED
+  INPUT_CHANGED,
+  PREVIOUS_SEARCH,
+  CLEAR_SEARCH
 } from './types';
 
 export const inputFieldChanged = (text) => {
-  console.log(text);
+
   return {
     type: INPUT_CHANGED,
     payload: text
+  };
+};
+
+export const clearSearch = () => {
+
+  return {
+    type: CLEAR_SEARCH,
+    payload: ""
   };
 };
 
@@ -25,6 +35,7 @@ export const fetchTrending = () => {
 };
 
 export const searchGifs = (input) => {
+
   return(dispatch) => {
     dispatch({ type: SEARCH_GIFS });
 
@@ -33,14 +44,40 @@ export const searchGifs = (input) => {
       + "&api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE")
       .then(response => {
       const responseData = response.data.data
-      trendingFetchSuccess(dispatch, responseData);
+      searchGifsSuccess(dispatch, responseData);
     })
   }
+};
+
+export const setPreviousSearch = (searchArray, search) => {
+  if ( searchArray.length >= 15 ) {
+    searchArray = searchArray.slice(Math.max(searchArray.length - 14, 1))
+  }
+  var newObject = {}
+  const currentTime = String(Date.now());
+
+  newObject.id = currentTime;
+  newObject.word = search;
+
+  searchArray.push(newObject);
+
+  return {
+    type: PREVIOUS_SEARCH,
+    payload: searchArray
+  };
 };
 
 const trendingFetchSuccess = (dispatch, responseData) => {
   dispatch({
     type: TRENDING_GIF_FETCH,
+    payload: responseData
+  });
+};
+
+const searchGifsSuccess = (dispatch, responseData) => {
+  console.log(responseData);
+  dispatch({
+    type: SEARCH_GIFS,
     payload: responseData
   });
 };

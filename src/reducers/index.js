@@ -5,5 +5,6 @@ import TrendingGifReducer from './TrendingGifReducer';
 export default combineReducers({
   trendingGif: TrendingGifReducer,
   searchedGifs: TrendingGifReducer,
-  inputFieldText: TrendingGifReducer
+  inputFieldText: TrendingGifReducer,
+  previousSearches: TrendingGifReducer
 });
