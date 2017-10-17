@@ -75,7 +75,6 @@ const trendingFetchSuccess = (dispatch, responseData) => {
 };
 
 const searchGifsSuccess = (dispatch, responseData) => {
-  console.log(responseData);
   dispatch({
     type: SEARCH_GIFS,
     payload: responseData

@@ -21,19 +21,20 @@ class IntroPage extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
+    this.onKeyDownCheck = this.onKeyDownCheck.bind(this);
 
   }
 
+  onKeyDownCheck(event) {
+    const _this = this;
+    if (event.key === "Enter") {
+      this.onSearchClick();
+    }
+  }
+
   onInputChange(text) {
-    // var newText;
-    // if (text.nativeEvent.data === null) {
-    //   newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1);
-    // } else {
-    //   newText = this.props.inputFieldText + text.nativeEvent.data;
-    // }
 
     const currentText = document.getElementById("search-input").value;
-    console.log(currentText);
 
     this.props.inputFieldChanged(currentText);
   }
@@ -65,7 +66,11 @@ class IntroPage extends Component {
         <SectionHeader title="GIPHY SEARCH" sectionClass="main-header" />
         <div className="outter-box">
           <div className="inner-left-box">
-            <Search onClick={this.onSearchClick} onChange={this.onInputChange} value={this.props.inputFieldText} />
+            <Search
+              onClick={this.onSearchClick}
+              onChange={this.onInputChange}
+              onKeyDownCheck={this.onKeyDownCheck}
+              value={this.props.inputFieldText} />
             <GifTrendingView />
           </div>
           <div className="inner-right-box">
