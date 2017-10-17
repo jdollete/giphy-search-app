@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../CSS/App.css';
 
 import SectionHeader from './common/SectionHeader';
-import Search from './Search.js';
+import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
 import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch } from '../actions';
