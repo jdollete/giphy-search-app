@@ -26,7 +26,6 @@ class IntroPage extends Component {
   }
 
   onKeyDownCheck(event) {
-    const _this = this;
     if (event.key === "Enter") {
       this.onSearchClick();
     }
