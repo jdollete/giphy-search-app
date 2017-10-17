@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import '../CSS/App.css';
 
@@ -12,49 +12,57 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSearchClick = this.onSearchClick.bind(this);
+    // this.onInputChange = this.onInputChange.bind(this);
+    // this.onSearchClick = this.onSearchClick.bind(this);
 
   }
 
-  onInputChange(text) {
-    var newText;
-    if (text.nativeEvent.data === null) {
-      newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1);
-    } else {
-      newText = this.props.inputFieldText + text.nativeEvent.data;
-    }
-
-    this.props.inputFieldChanged(newText);
+  componentWillMount() {
+    
   }
 
-  onSearchClick() {
-    const input = this.props.inputFieldText;
-    this.props.searchGifs(input);
-  }
+  // onInputChange(text) {
+  //   var newText;
+  //   if (text.nativeEvent.data === null) {
+  //     newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1);
+  //   } else {
+  //     newText = this.props.inputFieldText + text.nativeEvent.data;
+  //   }
+  //
+  //   this.props.inputFieldChanged(newText);
+  // }
+  //
+  // onSearchClick() {
+  //   const input = this.props.inputFieldText;
+  //   this.props.searchGifs(input);
+  // }
 
   render() {
+    const { onClick, onChange } = this.props
     return (
       <div className="search-section">
         <InputField
-          onChange={this.onInputChange}
+          onChange={onChange}
           value={this.props.inputFieldText}
           placeHolder="What would you like to search for?"/>
-        <Button onClick={this.onSearchClick} text="Search"/>
+        <Button onClick={onClick} text="Search"/>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  const { inputFieldText } = state.inputFieldText
-  const { searchedGifs}  = state.searchedGifs
-  
-  return {
-    inputFieldText,
-    searchedGifs
-  };
+// const mapStateToProps = state => {
+//   const { inputFieldText } = state.inputFieldText
+//   const { searchedGifs}  = state.searchedGifs
+//
+//   return {
+//     inputFieldText,
+//     searchedGifs
+//   };
+//
+// };
 
-};
+export default Search;
 
-export default connect(mapStateToProps, { inputFieldChanged, searchGifs })(Search);
+
+// export default connect(mapStateToProps, { inputFieldChanged, searchGifs })(Search);

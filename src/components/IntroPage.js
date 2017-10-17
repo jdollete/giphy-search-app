@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../CSS/App.css';
 
@@ -6,21 +7,45 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
+import { inputFieldChanged, searchGifs } from '../actions';
+
 
 class IntroPage extends Component {
 
   constructor(props) {
     super(props);
 
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSearchClick = this.onSearchClick.bind(this);
+
+  }
+
+  onInputChange(text) {
+    // var newText;
+    // if (text.nativeEvent.data === null) {
+    //   newText = this.props.inputFieldText.substring(0, this.props.inputFieldText.length-1);
+    // } else {
+    //   newText = this.props.inputFieldText + text.nativeEvent.data;
+    // }
+
+    const currentText = document.getElementById("search-input").value;
+    console.log(currentText);
+
+    this.props.inputFieldChanged(currentText);
+  }
+
+  onSearchClick() {
+    const input = this.props.inputFieldText;
+    this.props.searchGifs(input);
   }
 
   render() {
     return (
       <div>
-        <SectionHeader title="GIHPY SEARCH" sectionClass="main-header" />
+        <SectionHeader title="GIPHY SEARCH" sectionClass="main-header" />
         <div className="outter-box">
           <div className="inner-left-box">
-            <Search />
+            <Search onClick={this.onSearchClick} onChange={this.onInputChange} value={this.props.inputFieldText} />
             <GifTrendingView />
           </div>
           <div className="inner-right-box">
@@ -33,4 +58,16 @@ class IntroPage extends Component {
   }
 }
 
-export default IntroPage;
+const mapStateToProps = state => {
+  const { inputFieldText } = state.inputFieldText
+  const { searchedGifs }  = state.searchedGifs
+
+  return {
+    inputFieldText,
+    searchedGifs
+  };
+
+};
+
+// export default IntroPage;
+export default connect(mapStateToProps, { inputFieldChanged, searchGifs })(IntroPage);
