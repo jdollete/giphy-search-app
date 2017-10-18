@@ -7,7 +7,7 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifTrendingView from './GifTrendingView';
-import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch } from '../actions';
+import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch, fetchTrending } from '../actions';
 
 
 class IntroPage extends Component {
@@ -22,7 +22,12 @@ class IntroPage extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onKeyDownCheck = this.onKeyDownCheck.bind(this);
+    this.onListItemClick = this.onListItemClick.bind(this);
 
+  }
+
+  componentWillMount() {
+    this.props.fetchTrending();
   }
 
   onKeyDownCheck(event) {
@@ -32,7 +37,6 @@ class IntroPage extends Component {
   }
 
   onInputChange(text) {
-
     const currentText = document.getElementById("search-input").value;
 
     this.props.inputFieldChanged(currentText);
@@ -40,7 +44,6 @@ class IntroPage extends Component {
 
   onSearchClick() {
     const input = this.props.inputFieldText;
-    this.props.searchGifs(input);
 
     if (this.props.previousSearches[0] === undefined) {
       this.props.setPreviousSearch(this.props.previousSearches, input)
@@ -52,11 +55,16 @@ class IntroPage extends Component {
         this.props.setPreviousSearch(this.props.previousSearches, input);
       }
 
-      this.props.clearSearch()
-
+      // Edge Case: Only clears searches after second search
+      this.props.clearSearch();
     }
+    this.props.searchGifs(input);
+  }
 
-    console.log(this.props.previousSearches);
+  onListItemClick(event) {
+    const previousSearchItem = event._dispatchInstances.memoizedProps.children;
+
+    this.props.searchGifs(previousSearchItem);
   }
 
   render() {
@@ -70,10 +78,15 @@ class IntroPage extends Component {
               onChange={this.onInputChange}
               onKeyDownCheck={this.onKeyDownCheck}
               value={this.props.inputFieldText} />
-            <GifTrendingView />
+            <GifTrendingView
+              trendingGifObjects={this.props.trendingGif}
+              searchedGifObjects={this.props.gifSearchResults}  />
           </div>
           <div className="inner-right-box">
-            <PreviousSearches previousSearches={this.props.previousSearches} />
+            <PreviousSearches
+              previousSearches={this.props.previousSearches}
+              onListItemClick={this.onListItemClick}
+            />
           </div>
         </div>
       </div>
@@ -83,17 +96,27 @@ class IntroPage extends Component {
 }
 
 const mapStateToProps = state => {
+  const { trendingGif } = state.trendingGif
+  const { gifSearchResults } = state.searchedGifs
   const { inputFieldText } = state.inputFieldText
   const { searchedGifs }  = state.searchedGifs
   const { previousSearches } = state.previousSearches
-
+  // -----------Come back and refactor this!!!-----------------------------
   return {
+    trendingGif,
     inputFieldText,
     searchedGifs,
-    previousSearches
+    previousSearches,
+    gifSearchResults
   };
 
 };
 
 // export default IntroPage;
-export default connect(mapStateToProps, { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch })(IntroPage);
+export default connect(mapStateToProps, {
+  inputFieldChanged,
+  searchGifs,
+  setPreviousSearch,
+  clearSearch,
+  fetchTrending
+})(IntroPage);

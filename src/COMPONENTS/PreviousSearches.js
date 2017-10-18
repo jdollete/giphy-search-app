@@ -12,17 +12,24 @@ class PreviousSearches extends React.Component {
     this.renderList = this.renderList.bind(this);
   }
 
-  renderList(list) {
+  renderList(list, onListItemClick) {
+    const _this = this;
     const rowSearches = list.map(function(element){
 
       return (
-        <li key={element.id}>{element.word}</li>
+        <li
+          onClick={_this.props.onListItemClick}
+          key={element.id}
+        >
+          {element.word}
+        </li>
       )
     });
     return rowSearches;
   }
 
   render() {
+    const { onListItemClick, previousSearches } = this.props;
 
     return (
       <div className="">
@@ -31,7 +38,7 @@ class PreviousSearches extends React.Component {
         </div>
         <div>
           <ul className="previous-search-list">
-            {this.renderList(this.props.previousSearches)}
+            {this.renderList(previousSearches, onListItemClick)}
           </ul>
         </div>
       </div>
