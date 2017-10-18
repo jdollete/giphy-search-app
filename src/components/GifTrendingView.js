@@ -1,6 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { fetchTrending } from '../actions';
 
 import '../CSS/App.css';
 
@@ -12,17 +10,17 @@ class GifTrendingView extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.renderRow = this.renderRow.bind(this);
+    this.state = ({
+      headerText: "Trending GIFS"
+    });
+
+    // this.setHeaderStateToDefault = this.setHeaderStateToDefault.bind(this);
+    // this.setHeaderStateToSearched = this.setHeaderStateToSearched.bind(this);
 
   }
 
-  // componentWillMount() {
-  //   this.props.fetchTrending();
-  // }
-
   renderRow(trendingGifObjects, searchedGifObjects) {
-    // const elements = this.props.gifs;
-    console.log(Array.isArray(searchedGifObjects));
+    // -----Edge case: when search isn't found, it goes back to trending------
     var elements = [];
     if ( Array.isArray(searchedGifObjects) === false || searchedGifObjects.length !== 0 ) {
       elements = searchedGifObjects;
@@ -30,23 +28,51 @@ class GifTrendingView extends React.Component {
       elements = trendingGifObjects;
     }
 
-    if (elements != null) {
+    if ( elements != null ) {
       const gifRows = elements.map(function(element){
-
         return (
-          <GifListItem key={element.id} gifUrl={element.images.fixed_height.url} gifOrigLink={element.url} />
+          <GifListItem
+            key={element.id}
+            gifUrl={element.images.fixed_height.url}
+            gifOrigLink={element.url}
+          />
         )
       });
       return gifRows;
     }
   }
 
+  // renderSectionHeader() {
+  //
+  //   return (
+  //     <SectionHeader
+  //       sectionClass="sectioned-headers"
+  //       title={this.state.headerText}
+  //     />
+  //   );
+  // }
+
+  // setHeaderStateToDefault() {
+  //   this.setState({
+  //     headerText:"TRENDING GIFS"
+  //   });
+  // }
+  //
+  // setHeaderStateToSearched() {
+  //   this.setState({
+  //     headerText:"SEARCH RESULTS"
+  //   });
+  // }
+
   render() {
     const { trendingGifObjects, searchedGifObjects } = this.props;
 
     return (
       <div className="gif-image-section">
-        <SectionHeader sectionClass="sectioned-headers" title="Trending GIFs" />
+        <SectionHeader
+          sectionClass="sectioned-headers"
+          title={this.state.headerText}
+        />
         <div className="gif-image-display">
           {this.renderRow(trendingGifObjects, searchedGifObjects)}
         </div>
@@ -54,12 +80,5 @@ class GifTrendingView extends React.Component {
     );
   }
 }
-// const mapStateToProps = (state) => {
-//   const { gifs } = state.trendingGif
-//
-//   return { gifs };
-//
-// };
 
-// export default connect(mapStateToProps, { fetchTrending })(GifTrendingView);
 export default GifTrendingView;

@@ -22,6 +22,7 @@ class IntroPage extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onKeyDownCheck = this.onKeyDownCheck.bind(this);
+    this.onListItemClick = this.onListItemClick.bind(this);
 
   }
 
@@ -54,12 +55,16 @@ class IntroPage extends Component {
         this.props.setPreviousSearch(this.props.previousSearches, input);
       }
 
+      // Edge Case: Only clears searches after second search
       this.props.clearSearch();
     }
     this.props.searchGifs(input);
+  }
 
-    console.log(this.props.gifSearchResults);
-    // console.log(this.props.previousSearches);
+  onListItemClick(event) {
+    const previousSearchItem = event._dispatchInstances.memoizedProps.children;
+
+    this.props.searchGifs(previousSearchItem);
   }
 
   render() {
@@ -78,7 +83,10 @@ class IntroPage extends Component {
               searchedGifObjects={this.props.gifSearchResults}  />
           </div>
           <div className="inner-right-box">
-            <PreviousSearches previousSearches={this.props.previousSearches} />
+            <PreviousSearches
+              previousSearches={this.props.previousSearches}
+              onListItemClick={this.onListItemClick}
+            />
           </div>
         </div>
       </div>
@@ -93,7 +101,7 @@ const mapStateToProps = state => {
   const { inputFieldText } = state.inputFieldText
   const { searchedGifs }  = state.searchedGifs
   const { previousSearches } = state.previousSearches
-
+  // -----------Come back and refactor this!!!-----------------------------
   return {
     trendingGif,
     inputFieldText,
