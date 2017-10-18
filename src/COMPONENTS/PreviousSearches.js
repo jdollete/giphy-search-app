@@ -32,7 +32,7 @@ class PreviousSearches extends React.Component {
     const { onListItemClick, previousSearches } = this.props;
 
     return (
-      <div className="">
+      <div className="previous-search-section">
         <div className="">
           <SectionHeader sectionClass="sectioned-headers, previous-search-header" title="Previous Searches" />
         </div>

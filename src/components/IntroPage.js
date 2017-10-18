@@ -72,21 +72,24 @@ class IntroPage extends Component {
       <div>
         <SectionHeader title="GIPHY SEARCH" sectionClass="main-header" />
         <div className="outter-box">
-          <div className="inner-left-box">
-            <Search
-              onClick={this.onSearchClick}
-              onChange={this.onInputChange}
-              onKeyDownCheck={this.onKeyDownCheck}
-              value={this.props.inputFieldText} />
-            <GifTrendingView
-              trendingGifObjects={this.props.trendingGif}
-              searchedGifObjects={this.props.gifSearchResults}  />
-          </div>
-          <div className="inner-right-box">
-            <PreviousSearches
-              previousSearches={this.props.previousSearches}
-              onListItemClick={this.onListItemClick}
-            />
+          <Search
+            onClick={this.onSearchClick}
+            onChange={this.onInputChange}
+            onKeyDownCheck={this.onKeyDownCheck}
+            value={this.props.inputFieldText}
+          />
+          <div className="inner-box">
+            <div className="inner-left-box">
+              <GifTrendingView
+                trendingGifObjects={this.props.trendingGif}
+                searchedGifObjects={this.props.gifSearchResults}  />
+            </div>
+            <div className="inner-right-box">
+              <PreviousSearches
+                previousSearches={this.props.previousSearches}
+                onListItemClick={this.onListItemClick}
+              />
+            </div>
           </div>
         </div>
       </div>

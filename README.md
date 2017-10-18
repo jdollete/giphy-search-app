@@ -1,55 +1,27 @@
-install Node globally
-cd my-app
-npm start
+## Instructions To Run:
+* Install Node globally
+* cd to the root directory of the file
+* npm start
 
-MVP
-Written Using React.js
-GIFs must animate.
-GIFs must be pronounced GIF.
-Main view should
-Show a list of Trending GIFs.
-Show a search bar so a user can find a GIF.
-After the user searches for a term, app will display results of search right there in the main view
-A list of previous search terms should be maintained and should be clickable to re-run that search
-You may use any HTTP library (request, axios, superfetch, etc) but may not use any library designed for interacting with Giphy API including, but not limited to those found at https://www.npmjs.com/search?q=giphy
+## MVP:
+* GIFs must animate.
+* Main view should
+* Show a list of Trending GIFs.
+* Show a search bar so a user can find a GIF.
+* After the user searches for a term, app will display results of search right there in the main view
+* A list of previous search terms should be maintained and should be clickable to re-run that search
 
-API Call
-Trending
-http://api.giphy.com/v1/gifs/trending?api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE
-Search
-http://api.giphy.com/v1/gifs/search?q=dogs&api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE
+## Stretch Goals:
+* Have search by Language
+* Have previous searches be stored on local storage, so that the user can come back with populated previous searches
+* Deploy app to Heroku after setting up WebPack
 
-N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE
+## Known Bugs:
+* when search isn't found, it goes back to trending
+* Only clears searches after the second search
 
-Supported Language
-Spanish (es)
-Portuguese (pt)
-Indonesian (id)
-French (fr)
-Arabic (ar)
-Turkish (tr)
-Thai (th)
-Vietnamese (vi)
-German (de)
-Italian (it)
-Japanese (ja)
-Chinese Simplified (zh-CN)
-Chinese Traditional (zh-TW)
-Russian (ru)
-Korean (ko)
-Polish (pl)
-Dutch (nl)
-Romanian (ro)
-Hungarian (hu)
-Swedish (sv)
-Czech (cs)
-Hindi (hi)
-Bengali (bn)
-Danish (da)
-Farsi (fa)
-Filipino (tl)
-Finnish (fi)
-Hebrew (iw)
-Malay (ms)
-Norwegian (no)
-Ukrainian (uk)
+## API Call:
+* Trending
+  * http://api.giphy.com/v1/gifs/trending?api_key={Your Key}
+* Search
+  * http://api.giphy.com/v1/gifs/search?q=dogs&api_key={Your Key}

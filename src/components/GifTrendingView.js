@@ -3,7 +3,7 @@ import React from 'react';
 import '../CSS/App.css';
 
 import GifListItem from './GifListItem';
-import SectionHeader from './common/SectionHeader';
+// import SectionHeader from './common/SectionHeader';
 
 class GifTrendingView extends React.Component {
 
@@ -69,10 +69,6 @@ class GifTrendingView extends React.Component {
 
     return (
       <div className="gif-image-section">
-        <SectionHeader
-          sectionClass="sectioned-headers"
-          title={this.state.headerText}
-        />
         <div className="gif-image-display">
           {this.renderRow(trendingGifObjects, searchedGifObjects)}
         </div>
