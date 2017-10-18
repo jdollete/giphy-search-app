@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import { fetchTrending } from '../actions';
 
 import '../CSS/App.css';
@@ -20,11 +20,18 @@ class GifTrendingView extends React.Component {
   //   this.props.fetchTrending();
   // }
 
-  renderRow(trendingGifObjects) {
+  renderRow(trendingGifObjects, searchedGifObjects) {
     // const elements = this.props.gifs;
+    console.log(Array.isArray(searchedGifObjects));
+    var elements = [];
+    if ( Array.isArray(searchedGifObjects) === false || searchedGifObjects.length !== 0 ) {
+      elements = searchedGifObjects;
+    } else {
+      elements = trendingGifObjects;
+    }
 
-    if (trendingGifObjects != null) {
-      const gifRows = trendingGifObjects.map(function(element){
+    if (elements != null) {
+      const gifRows = elements.map(function(element){
 
         return (
           <GifListItem key={element.id} gifUrl={element.images.fixed_height.url} gifOrigLink={element.url} />
@@ -35,13 +42,13 @@ class GifTrendingView extends React.Component {
   }
 
   render() {
-    const { trendingGifObjects } = this.props;
+    const { trendingGifObjects, searchedGifObjects } = this.props;
 
     return (
       <div className="gif-image-section">
         <SectionHeader sectionClass="sectioned-headers" title="Trending GIFs" />
         <div className="gif-image-display">
-          {this.renderRow(trendingGifObjects)}
+          {this.renderRow(trendingGifObjects, searchedGifObjects)}
         </div>
       </div>
     );

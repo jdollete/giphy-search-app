@@ -43,7 +43,6 @@ class IntroPage extends Component {
 
   onSearchClick() {
     const input = this.props.inputFieldText;
-    this.props.searchGifs(input);
 
     if (this.props.previousSearches[0] === undefined) {
       this.props.setPreviousSearch(this.props.previousSearches, input)
@@ -56,10 +55,11 @@ class IntroPage extends Component {
       }
 
       this.props.clearSearch();
-
     }
+    this.props.searchGifs(input);
 
-    console.log(this.props.previousSearches);
+    console.log(this.props.gifSearchResults);
+    // console.log(this.props.previousSearches);
   }
 
   render() {
@@ -73,7 +73,9 @@ class IntroPage extends Component {
               onChange={this.onInputChange}
               onKeyDownCheck={this.onKeyDownCheck}
               value={this.props.inputFieldText} />
-            <GifTrendingView trendingGifObjects={this.props.trendingGif}  />
+            <GifTrendingView
+              trendingGifObjects={this.props.trendingGif}
+              searchedGifObjects={this.props.gifSearchResults}  />
           </div>
           <div className="inner-right-box">
             <PreviousSearches previousSearches={this.props.previousSearches} />
@@ -87,7 +89,7 @@ class IntroPage extends Component {
 
 const mapStateToProps = state => {
   const { trendingGif } = state.trendingGif
-  const { gifSearchResults } = state.gifSearchResults
+  const { gifSearchResults } = state.searchedGifs
   const { inputFieldText } = state.inputFieldText
   const { searchedGifs }  = state.searchedGifs
   const { previousSearches } = state.previousSearches
