@@ -6,7 +6,7 @@ import '../CSS/App.css';
 import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
-import GifTrendingView from './GifTrendingView';
+import GifView from './GifView';
 import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch, fetchTrending } from '../actions';
 
 
@@ -80,7 +80,7 @@ class IntroPage extends Component {
           />
           <div className="inner-box">
             <div className="inner-left-box">
-              <GifTrendingView
+              <GifView
                 trendingGifObjects={this.props.trendingGif}
                 searchedGifObjects={this.props.gifSearchResults}  />
             </div>

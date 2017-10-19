@@ -1,1 +1,1 @@
-export * from './TrendingGifActions';
+export * from './GifActions';

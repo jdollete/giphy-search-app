@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import TrendingGifReducer from './TrendingGifReducer';
+import GifReducer from './GifReducer';
 
 
 export default combineReducers({
-  trendingGif: TrendingGifReducer,
-  searchedGifs: TrendingGifReducer,
-  inputFieldText: TrendingGifReducer,
-  previousSearches: TrendingGifReducer,
-  gifSearchResults: TrendingGifReducer
+  trendingGif: GifReducer,
+  searchedGifs: GifReducer,
+  inputFieldText: GifReducer,
+  previousSearches: GifReducer,
+  gifSearchResults: GifReducer
 });
