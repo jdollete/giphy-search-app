@@ -3,10 +3,10 @@ import '../CSS/App.css';
 import GifListItem from './GifListItem';
 // import SectionHeader from './common/SectionHeader';
 
-class GifTrendingView extends React.Component {
+class GifView extends React.Component {
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
     // this.state = ({
     //   headerText: "Trending GIFS"
@@ -15,7 +15,7 @@ class GifTrendingView extends React.Component {
     // this.setHeaderStateToDefault = this.setHeaderStateToDefault.bind(this);
     // this.setHeaderStateToSearched = this.setHeaderStateToSearched.bind(this);
 
-  }
+  // }
 
   renderRow(trendingGifObjects, searchedGifObjects) {
     // -----Edge case: when search isn't found, it goes back to trending------
@@ -78,4 +78,4 @@ class GifTrendingView extends React.Component {
   }
 }
 
-export default GifTrendingView;
+export default GifView;
