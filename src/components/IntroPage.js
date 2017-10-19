@@ -7,7 +7,13 @@ import SectionHeader from './common/SectionHeader';
 import Search from './Search';
 import PreviousSearches from './PreviousSearches';
 import GifView from './GifView';
-import { inputFieldChanged, searchGifs, setPreviousSearch, clearSearch, fetchTrending } from '../actions';
+import {
+  inputFieldChanged, 
+  searchGifs,
+  setPreviousSearch,
+  clearSearch,
+  fetchTrending
+} from '../actions';
 
 
 class IntroPage extends Component {
@@ -99,12 +105,15 @@ class IntroPage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { trendingGif } = state.trendingGif
-  const { gifSearchResults } = state.searchedGifs
-  const { inputFieldText } = state.inputFieldText
-  const { searchedGifs }  = state.searchedGifs
-  const { previousSearches } = state.previousSearches
-  // -----------Come back and refactor this!!!-----------------------------
+
+  const {
+    previousSearches,
+    trendingGif,
+    gifSearchResults,
+    inputFieldText,
+    searchedGifs
+  } = state.gifObjects
+
   return {
     trendingGif,
     inputFieldText,
@@ -115,7 +124,6 @@ const mapStateToProps = state => {
 
 };
 
-// export default IntroPage;
 export default connect(mapStateToProps, {
   inputFieldChanged,
   searchGifs,
