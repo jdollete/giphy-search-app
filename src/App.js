@@ -16,8 +16,8 @@ const App = ({ gifUrl, gifOrigLink }) => {
         <IntroPage />
       </div>
     </Provider>
-
   );
+  
 }
 
 export default App;

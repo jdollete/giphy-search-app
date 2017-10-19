@@ -14,6 +14,7 @@ const InputField = ({ title, placeHolder, value, onChange, onKeyDownCheck }) => 
       value={value}
     />
   );
+  
 }
 
 export default InputField;

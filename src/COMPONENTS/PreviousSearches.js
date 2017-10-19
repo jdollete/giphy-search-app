@@ -1,7 +1,5 @@
 import React from 'react';
-
 import '../CSS/App.css';
-
 import SectionHeader from './common/SectionHeader';
 
 class PreviousSearches extends React.Component {
@@ -23,7 +21,7 @@ class PreviousSearches extends React.Component {
         >
           {element.word}
         </li>
-      )
+      );
     });
     return rowSearches;
   }

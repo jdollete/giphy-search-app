@@ -6,10 +6,10 @@
 ## MVP:
 * GIFs must animate.
 * Main view should
-* Show a list of Trending GIFs.
-* Show a search bar so a user can find a GIF.
-* After the user searches for a term, app will display results of search right there in the main view
-* A list of previous search terms should be maintained and should be clickable to re-run that search
+  * Show a list of Trending GIFs.
+  * Show a search bar so a user can find a GIF.
+  * After the user searches for a term, app will display results of search right there in the main view
+  * A list of previous search terms should be maintained and should be clickable to re-run that search
 
 ## Stretch Goals:
 * Have search by Language
