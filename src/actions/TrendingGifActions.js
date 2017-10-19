@@ -21,17 +21,20 @@ export const clearSearch = () => {
     type: CLEAR_SEARCH,
     payload: ""
   };
+
 };
 
 export const fetchTrending = () => {
+
   return(dispatch) => {
     dispatch({ type: TRENDING_GIF_FETCH });
 
     axios.get('https://api.giphy.com/v1/gifs/trending?api_key=N7jGbYOebKSqhTe9Lq0tIz3gpiBU4bRE').then(response => {
       const responseData = response.data.data
       trendingFetchSuccess(dispatch, responseData);
-    })
+    });
   }
+
 };
 
 export const searchGifs = (input) => {
@@ -45,13 +48,15 @@ export const searchGifs = (input) => {
       .then(response => {
       const responseData = response.data.data
       searchGifsSuccess(dispatch, responseData);
-    })
+    });
   }
+
 };
 
 export const setPreviousSearch = (searchArray, search) => {
+
   if ( searchArray.length >= 15 ) {
-    searchArray = searchArray.slice(Math.max(searchArray.length - 14, 1))
+    searchArray = searchArray.slice(Math.max(searchArray.length - 14, 1));
   }
   var newObject = {}
   const currentTime = String(Date.now());
@@ -65,6 +70,7 @@ export const setPreviousSearch = (searchArray, search) => {
     type: PREVIOUS_SEARCH,
     payload: searchArray
   };
+
 };
 
 const trendingFetchSuccess = (dispatch, responseData) => {
@@ -76,8 +82,10 @@ const trendingFetchSuccess = (dispatch, responseData) => {
 };
 
 const searchGifsSuccess = (dispatch, responseData) => {
+
   dispatch({
     type: SEARCH_GIFS,
     payload: responseData
   });
+  
 };

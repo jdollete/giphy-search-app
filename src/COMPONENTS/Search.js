@@ -6,6 +6,7 @@ import InputField from './common/InputField';
 import Button from './common/Button';
 
 const Search = ({ onClick, onChange, onKeyDownCheck, value }) => {
+
   return (
     <div className="search-section">
       <InputField
@@ -16,6 +17,7 @@ const Search = ({ onClick, onChange, onKeyDownCheck, value }) => {
       <Button onClick={onClick} text="Search"/>
     </div>
   );
+  
 }
 
 export default Search;

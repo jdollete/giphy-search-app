@@ -31,7 +31,7 @@ class IntroPage extends Component {
   }
 
   onKeyDownCheck(event) {
-    if (event.key === "Enter") {
+    if ( event.key === "Enter" ) {
       this.onSearchClick();
     }
   }
@@ -45,11 +45,11 @@ class IntroPage extends Component {
   onSearchClick() {
     const input = this.props.inputFieldText;
 
-    if (this.props.previousSearches[0] === undefined) {
+    if ( this.props.previousSearches[0] === undefined ) {
       this.props.setPreviousSearch(this.props.previousSearches, input)
     } else {
       const wordsSearched = this.props.previousSearches.map(element => {return element.word})
-      if (wordsSearched.includes(input)) {
+      if ( wordsSearched.includes(input) ) {
         return
       } else {
         this.props.setPreviousSearch(this.props.previousSearches, input);

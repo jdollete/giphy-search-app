@@ -1,7 +1,5 @@
 import React from 'react';
-
 import '../CSS/App.css';
-
 import GifListItem from './GifListItem';
 // import SectionHeader from './common/SectionHeader';
 
@@ -10,9 +8,9 @@ class GifTrendingView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = ({
-      headerText: "Trending GIFS"
-    });
+    // this.state = ({
+    //   headerText: "Trending GIFS"
+    // });
 
     // this.setHeaderStateToDefault = this.setHeaderStateToDefault.bind(this);
     // this.setHeaderStateToSearched = this.setHeaderStateToSearched.bind(this);
@@ -30,6 +28,7 @@ class GifTrendingView extends React.Component {
 
     if ( elements != null ) {
       const gifRows = elements.map(function(element){
+
         return (
           <GifListItem
             key={element.id}
@@ -38,8 +37,10 @@ class GifTrendingView extends React.Component {
           />
         )
       });
+
       return gifRows;
     }
+
   }
 
   // renderSectionHeader() {

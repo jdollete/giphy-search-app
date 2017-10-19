@@ -7,6 +7,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
+
   trendingGif: [],
   inputFieldText: "",
   previousSearches: [],
@@ -28,4 +29,5 @@ export default (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
+  
 };
