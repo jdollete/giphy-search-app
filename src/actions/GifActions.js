@@ -5,7 +5,7 @@ import {
   INPUT_CHANGED,
   PREVIOUS_SEARCH,
   CLEAR_SEARCH
-} from './types';
+} from './types'; 
 
 export const inputFieldChanged = (text) => {
 
@@ -87,5 +87,5 @@ const searchGifsSuccess = (dispatch, responseData) => {
     type: SEARCH_GIFS,
     payload: responseData
   });
-  
+
 };
