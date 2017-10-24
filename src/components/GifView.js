@@ -18,7 +18,7 @@ class GifView extends React.Component {
   // }
 
   renderRow(trendingGifObjects, searchedGifObjects) {
-    // -----Edge case: when search isn't found, it goes back to trending------
+    // -----Edge case: when search isn't found, it goes back to trending------ 
     var elements = [];
     if ( Array.isArray(searchedGifObjects) === false || searchedGifObjects.length !== 0 ) {
       elements = searchedGifObjects;
